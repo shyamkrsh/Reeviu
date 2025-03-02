@@ -40,7 +40,7 @@ let suggeston = [
 ]
 export default function Home() {
 
-  const [activeValue, setActiveValue] = useState(0);
+  const [activeValue, setActiveValue] = useState(1);
 
   return (
     <View style={styles.mainContainer}>

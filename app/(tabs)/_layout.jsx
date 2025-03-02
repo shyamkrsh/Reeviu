@@ -42,7 +42,7 @@ export default function TabLayout() {
         options={{
           title: "",
           headerShown: false,
-          tabBarIcon: ({ size, color }) => <AntDesign name="pluscircleo" size={size} color={color} />,
+          tabBarIcon: ({ size, color }) => <AntDesign name="pluscircleo" size={size+3} color={color} />,
         }}
       />
       <Tabs.Screen

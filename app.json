@@ -11,6 +11,9 @@
     "ios": {
       "supportsTablet": true
     },
+    "permissions": [
+      "CAMERA"
+    ],
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",

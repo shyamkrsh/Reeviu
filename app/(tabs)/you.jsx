@@ -1,4 +1,4 @@
-import { View, Text, Image, FlatList } from 'react-native'
+import { View, Text, Image, FlatList, Pressable } from 'react-native'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import Colors from '../../constants/Colors'
@@ -7,19 +7,35 @@ import HistoryVideoCard from '../../components/HistoryVideoCard';
 import Entypo from '@expo/vector-icons/Entypo';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useRouter } from 'expo-router';
+
 
 const You = () => {
+
+  const router = useRouter();
+
   return (
     <View style={styles.profileContainer}>
-      <View style={styles.headerIcon}>
-        <Ionicons name="search-outline" size={24} color="white" />
-        <Ionicons name="notifications-outline" size={24} color="white" />
+
+      <View style={styles.headerContainer}>
+        <View style={styles.logoContainer}>
+          <Image source={require('../../assets/images/logo.png')} style={styles.logoImage} />
+          <Text style={styles.logoText}>Reeviu</Text>
+        </View>
+        <View style={styles.headerIcon}>
+          <Pressable onPress={() => router.push('/search')}>
+            <Ionicons name="search-outline" size={24} color="white" />
+          </Pressable>
+          <Ionicons name="notifications-outline" size={24} color="white" />
+        </View>
       </View>
+
+
       <View style={styles.profileDetails}>
         <Image source={require('../../assets/images/profile.jpg')} style={styles.profileImage} />
         <View>
           <Text style={{ color: 'white', fontSize: 25 }}>Shyam Sharma</Text>
-          <Text style={{ color: 'gray', fontSize: 15 }}>shyamkrcse@gmail.com</Text>
+          <Text style={{ color: 'gray', fontSize: 15 }}>shyamkrcse@gmail.com &lt;view channel  </Text>
         </View>
       </View>
 
@@ -32,8 +48,8 @@ const You = () => {
         <FlatList
           horizontal
           data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <HistoryVideoCard />}
+          keyExtractor={(item) => item.toString()}
+          renderItem={({ item }) => <HistoryVideoCard key={item} />}
           showsHorizontalScrollIndicator={false}
         />
       </View>
@@ -43,12 +59,12 @@ const You = () => {
         <Entypo name="folder-video" size={24} color="white" />
         <Text style={styles.listText}>Your videos</Text>
       </View>
-      <View style={[styles.list, {justifyContent : 'space-between'}]}>
-        <View style={{flexDirection : 'row', alignItems : 'center', gap : 15}}>
+      <View style={[styles.list, { justifyContent: 'space-between' }]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 15 }}>
           <AntDesign name="download" size={24} color="white" />
           <Text style={styles.listText}>Downloads</Text>
         </View>
-        <MaterialCommunityIcons name="checkbox-marked-circle" size={24} color="white"/>
+        <MaterialCommunityIcons name="checkbox-marked-circle" size={24} color="white" />
       </View>
       <View style={styles.list}>
         <Entypo name="stopwatch" size={24} color="white" />
@@ -61,6 +77,27 @@ const You = () => {
 export default You
 
 let styles = StyleSheet.create({
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 20
+  },
+  logoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5
+  },
+  logoImage: {
+    width: 35,
+    height: 25
+  },
+  logoText: {
+    fontSize: 23,
+    fontWeight: 700,
+    color: Colors.WHITE,
+    fontFamily: 'poppins-medium'
+  },
   headerIcon: {
     flexDirection: 'row',
     justifyContent: 'flex-end',

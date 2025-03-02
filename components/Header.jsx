@@ -1,9 +1,13 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '../constants/Colors'
+import { Link, useRouter } from 'expo-router'
 
 const Header = () => {
+
+    const router = useRouter();
+
     return (
         <View style={styles.headerContainer}>
             <View style={styles.logoContainer}>
@@ -11,7 +15,10 @@ const Header = () => {
                 <Text style={styles.logoText}>Reeviu</Text>
             </View>
             <View style={styles.headerIcons}>
-                <Ionicons name="search-outline" size={24} color="white" />
+
+                <Pressable onPress={() => router.push('/search')}>
+                    <Ionicons name="search-outline" size={24} color="white" />
+                </Pressable>
                 {/* <FontAwesome name="user-circle-o" size={24} color="white" /> */}
                 <Image source={require("../assets/images/profile.jpg")} style={styles.profileImage} />
             </View>
