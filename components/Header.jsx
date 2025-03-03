@@ -20,7 +20,9 @@ const Header = () => {
                     <Ionicons name="search-outline" size={24} color="white" />
                 </Pressable>
                 {/* <FontAwesome name="user-circle-o" size={24} color="white" /> */}
-                <Image source={require("../assets/images/profile.jpg")} style={styles.profileImage} />
+                <Pressable onPress={() => router.push('/(tabs)/you')}>
+                    <Image source={require("../assets/images/profile.jpg")} style={styles.profileImage} />
+                </Pressable>
             </View>
         </View>
     )
@@ -34,7 +36,8 @@ let styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 10
+        paddingVertical: 13,
+        paddingHorizontal: 10
     },
     logoContainer: {
         flexDirection: 'row',
